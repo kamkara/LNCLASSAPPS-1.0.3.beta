@@ -25,6 +25,33 @@ gem 'jbuilder', '~> 2.7'
 # Use Active Storage variant
 # gem 'image_processing', '~> 1.2'
 
+################  JS ################
+#gem 'jquery-rails'
+#gem 'jquery-ui-rails'
+
+################  URLS ################
+gem 'friendly_id'
+
+
+####################    MEMBERSHIP ######################
+gem "devise"
+#gem 'devise-i18n', '~> 1.9', '>= 1.9.2'
+#gem 'devise-i18n-views', '~> 0.3.7'
+#gem 'devise_invitable', '~> 2.0', '>= 2.0.3'
+
+################  PRODUCTIONS ################
+
+group :production do
+# Use Unicorn as the app server
+ #gem 'rack-timeout', '~> 0.6.0'
+ #gem 'unicorn', '~> 5.8'
+end
+
+
+
+
+
+
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', '>= 1.4.2', require: false
 
@@ -34,6 +61,10 @@ group :development, :test do
 end
 
 group :development do
+  gem 'solargraph'
+  gem 'rubocop'
+  gem "better_errors"
+
   # Access an interactive console on exception pages or by calling 'console' anywhere in the code.
   gem 'web-console', '>= 3.3.0'
   gem 'listen', '~> 3.2'
