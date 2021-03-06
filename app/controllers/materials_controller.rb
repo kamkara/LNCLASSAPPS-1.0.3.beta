@@ -1,4 +1,5 @@
 class MaterialsController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_material, only: [:show, :edit, :update, :destroy]
 
   # GET /materials
@@ -21,7 +22,7 @@ class MaterialsController < ApplicationController
 
   # POST /materials
   def create
-    @material = Material.new(material_params)
+    @material = current_user.materials.build(material_params)
 
     if @material.save
       redirect_to @material, notice: 'Material was successfully created.'
@@ -48,7 +49,7 @@ class MaterialsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_material
-      @material = Material.find(params[:id])
+      @material = Material.friendly.find(params[:id])
     end
 
     # Only allow a trusted parameter "white list" through.
