@@ -1,0 +1,54 @@
+<!--HEADER/!-->
+<!-- no header render on the home page/!-->
+<% if user_signed_in? %>
+<!-- Navigation -->
+    <nav class="navbar navbar-expand-sm navbar-dark bg-blue-500 fixed-top">
+        <div class="container">
+            <%= link_to root_path, class: "navbar-brand logo font-bold" do %>LNCLASS <% end  %>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarResponsive">
+                <ul class="navbar-nav ml-auto">
+                    <!-- Home onglet/!-->
+                    <li class="nav-item nav-item_feed active">
+                        <%= link_to root_path, class: "m-links nav-link active " do %>
+                            <i class="fa fa-home"></i> Acceuil
+                        <% end %>
+                    </li>
+
+                     <!-- user avatar/!-->
+                    <li class="nav-item nav-item_feed active">
+                        <%= link_to edit_user_registration_path(@user), class: " active m-links nav-link capitalize" do %>
+                            <i class="fas fa-user-circle"></i>
+                            <%= current_user.full_name %>
+                        <% end %>
+                    </li>
+                     <!-- create course by teacher/!-->
+                    
+                    <% if current_user.role == "teacher" %>
+                        <li class="nav-item nav-item_feed active">
+                            <%= link_to dashboard_index_path, class: "m-links nav-link active  " do %>
+                            <i class="fas fa-users"></i> TablesClass
+                            <% end %>
+                        </li>
+                    <% elsif current_user.role == "team" %>
+                    <li class="nav-item nav-item_feed active">
+                            <%= link_to dashboard_index_path, class: "m-links nav-link active  " do %>
+                            <i class="fas fa-users"></i> Admistration
+                            <% end %>
+                        </li>
+                    <% end %>
+                    
+
+                    <!-- Sign out /!-->
+                    <li class="nav-item nav-item_feed active">
+                        <%= link_to destroy_user_session_path, method: :delete, class: "m-links nav-link active " do %>
+                            <i class="fa fa-power-off" aria-hidden="true"></i> Déconnexion
+                        <% end %>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+<% end %>

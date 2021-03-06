@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="<%= I18n.locale %>">
   <head>
-    <title>LNCLASSAPPS</title>
+    <title><%= title %></title>
     <%= render "layouts/shared/headers" %>
   </head>
 
   <body>
+    <%= render "shared/nav/navbar" %>
+    <%= render "layouts/shared/noticed" %>
     <%= yield %>
   </body>
 </html>
