@@ -1,0 +1,42 @@
+<% content_for @title = @course.title %>
+
+<div class="container-sm">
+  <div class="row pt-16 ">
+    <div class="col-12 col-md-6 col-lg-6">
+
+      <!-- card course-->
+      <h1 class="my-2 font-semibold">Résumé</h1>
+      <div class="card">
+        <!-- title!-->
+        <h1 class="text-xl leading-tight font-bold mt-2 mx-2">
+          <%= @course.title %>
+        </h1>
+
+         <!-- avatar data/!-->
+        <div class="flex items-cente mt-4 ml-6">
+         
+          <!-- Course meta data-->
+          <%= render "courses/shared/user_card_course" %>
+        </div>
+
+        <!--content/!-->
+        <div class="m-2">
+          <p class="mx-2" id="read_more">
+            <%= @course.content.to_s.html_safe %>
+          </p>
+          <hr>
+          <!-- Options-->
+          <%= render "courses/shared/options" %>
+        </div>
+      </div>
+    </div>
+    <!-- Exercices-->
+    <div class="col-12 col-md-6 col-lg-6">
+      <h1 class="my-2 font-semibold">Exercices</h1>
+      
+      <!-- exercice card -->
+      <%= render "exercice_card" %>
+    </div>
+  </div>
+</div>
+

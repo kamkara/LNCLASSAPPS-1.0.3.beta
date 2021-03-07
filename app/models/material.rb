@@ -1,7 +1,11 @@
 class Material < ApplicationRecord
  
   belongs_to :user
-  #has_many :courses
+  has_many :courses
+
+  validates :title,
+            :user_id,
+            :slug, presence: true
 
   ############ SLUG ###########
   extend FriendlyId
