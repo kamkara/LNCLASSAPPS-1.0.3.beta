@@ -6,4 +6,5 @@ class User < ApplicationRecord
 
   has_many :materials
   has_many :levels
+  has_many :courses
 end
